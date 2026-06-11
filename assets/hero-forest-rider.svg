@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Rowerzysta w lesie</title>
+  <desc id="desc">Nowoczesna ilustracja rowerzysty MTB jadącego przez zielony las.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#dff3d1"/>
+      <stop offset="1" stop-color="#75b66f"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" x2="1">
+      <stop offset="0" stop-color="#1f6b43"/>
+      <stop offset="1" stop-color="#9ed10a"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="620" rx="46" fill="url(#sky)"/>
+  <circle cx="710" cy="110" r="76" fill="#fff8c9" opacity=".9"/>
+  <circle cx="710" cy="110" r="122" fill="#fff8c9" opacity=".18" filter="url(#soft)"/>
+
+  <g opacity=".95">
+    <path d="M40 520 C150 440 250 430 360 485 C455 530 540 420 690 450 C790 470 850 520 920 485 L920 640 L0 640 L0 550 Z" fill="#174d31"/>
+    <path d="M0 540 C140 475 260 470 390 520 C510 570 610 465 735 498 C805 516 850 545 900 530 L900 640 L0 640 Z" fill="url(#hill)" opacity=".9"/>
+  </g>
+
+  <g opacity=".55">
+    <path d="M108 472 L154 155 L198 472" fill="none" stroke="#174d31" stroke-width="22" stroke-linecap="round"/>
+    <path d="M280 470 L318 105 L372 470" fill="none" stroke="#174d31" stroke-width="25" stroke-linecap="round"/>
+    <path d="M620 470 L660 126 L720 470" fill="none" stroke="#174d31" stroke-width="25" stroke-linecap="round"/>
+    <path d="M784 474 L820 178 L865 474" fill="none" stroke="#174d31" stroke-width="19" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(130 175)">
+    <ellipse cx="330" cy="330" rx="315" ry="34" fill="#143722" opacity=".22"/>
+    <circle cx="218" cy="310" r="92" fill="none" stroke="#14251c" stroke-width="18"/>
+    <circle cx="218" cy="310" r="58" fill="none" stroke="#14251c" stroke-width="6" opacity=".45"/>
+    <circle cx="498" cy="310" r="92" fill="none" stroke="#14251c" stroke-width="18"/>
+    <circle cx="498" cy="310" r="58" fill="none" stroke="#14251c" stroke-width="6" opacity=".45"/>
+    <path d="M218 310 L315 210 L395 310 L278 310 L360 310 L498 310 L395 210" fill="none" stroke="#15281e" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M315 210 L350 152 L420 156" fill="none" stroke="#15281e" stroke-width="15" stroke-linecap="round"/>
+    <path d="M395 210 L430 133" fill="none" stroke="#15281e" stroke-width="12" stroke-linecap="round"/>
+    <path d="M425 134 L486 123" stroke="#15281e" stroke-width="12" stroke-linecap="round"/>
+    <path d="M350 152 C365 126 386 110 414 110" fill="none" stroke="#a7d100" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="412" cy="83" r="34" fill="#f1c18a"/>
+    <path d="M379 89 C385 48 424 31 456 58 C448 90 420 103 379 89Z" fill="#13231b"/>
+    <path d="M414 120 L360 190 L432 225 L482 205" fill="none" stroke="#f5f3e7" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M360 190 L314 214" stroke="#f5f3e7" stroke-width="20" stroke-linecap="round"/>
+    <path d="M435 226 L394 308" stroke="#f5f3e7" stroke-width="20" stroke-linecap="round"/>
+    <path d="M359 190 L310 290" stroke="#1f6b43" stroke-width="22" stroke-linecap="round"/>
+    <path d="M482 205 L514 255" stroke="#1f6b43" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="395" cy="310" r="15" fill="#a7d100"/>
+  </g>
+
+  <path d="M0 575 C140 545 310 590 460 550 C640 505 790 555 900 520 L900 620 L0 620 Z" fill="#f6f3ed" opacity=".95"/>
+</svg>

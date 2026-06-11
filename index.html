@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -116,7 +116,50 @@
       </div>
       <div class="hero-card">
         <div class="card-top">MTB • Trail • E-bike • Junior</div>
-        <img class="hero-visual" src="assets/hero-forest-rider.svg" alt="Rowerzysta MTB jadący przez zielony las">
+        <div class="hero-visual inline-hero" aria-label="Rowerzysta MTB jadący przez zielony las" role="img">
+          <svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="v7sky" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#e4f6d5"/>
+                <stop offset="1" stop-color="#68ad66"/>
+              </linearGradient>
+              <linearGradient id="v7hill" x1="0" x2="1">
+                <stop offset="0" stop-color="#1f6b43"/>
+                <stop offset="1" stop-color="#a7d100"/>
+              </linearGradient>
+            </defs>
+            <rect width="900" height="620" rx="48" fill="url(#v7sky)"/>
+            <circle cx="710" cy="105" r="76" fill="#fff8c9" opacity=".95"/>
+            <path d="M40 520 C150 440 250 430 360 485 C455 530 540 420 690 450 C790 470 850 520 920 485 L920 640 L0 640 L0 550 Z" fill="#174d31"/>
+            <path d="M0 540 C140 475 260 470 390 520 C510 570 610 465 735 498 C805 516 850 545 900 530 L900 640 L0 640 Z" fill="url(#v7hill)" opacity=".92"/>
+            <g opacity=".56">
+              <path d="M105 472 L154 152 L200 472" fill="none" stroke="#174d31" stroke-width="22" stroke-linecap="round"/>
+              <path d="M280 470 L318 105 L372 470" fill="none" stroke="#174d31" stroke-width="25" stroke-linecap="round"/>
+              <path d="M620 470 L660 126 L720 470" fill="none" stroke="#174d31" stroke-width="25" stroke-linecap="round"/>
+              <path d="M784 474 L820 178 L865 474" fill="none" stroke="#174d31" stroke-width="19" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(125 175)">
+              <ellipse cx="330" cy="330" rx="315" ry="34" fill="#143722" opacity=".22"/>
+              <circle cx="218" cy="310" r="92" fill="none" stroke="#14251c" stroke-width="18"/>
+              <circle cx="498" cy="310" r="92" fill="none" stroke="#14251c" stroke-width="18"/>
+              <path d="M218 310 L315 210 L395 310 L278 310 L360 310 L498 310 L395 210" fill="none" stroke="#15281e" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M315 210 L350 152 L420 156" fill="none" stroke="#15281e" stroke-width="15" stroke-linecap="round"/>
+              <path d="M395 210 L430 133" fill="none" stroke="#15281e" stroke-width="12" stroke-linecap="round"/>
+              <path d="M425 134 L486 123" stroke="#15281e" stroke-width="12" stroke-linecap="round"/>
+              <path d="M350 152 C365 126 386 110 414 110" fill="none" stroke="#a7d100" stroke-width="18" stroke-linecap="round"/>
+              <circle cx="412" cy="83" r="34" fill="#f1c18a"/>
+              <path d="M379 89 C385 48 424 31 456 58 C448 90 420 103 379 89Z" fill="#13231b"/>
+              <path d="M414 120 L360 190 L432 225 L482 205" fill="none" stroke="#f5f3e7" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M360 190 L314 214" stroke="#f5f3e7" stroke-width="20" stroke-linecap="round"/>
+              <path d="M435 226 L394 308" stroke="#f5f3e7" stroke-width="20" stroke-linecap="round"/>
+              <path d="M359 190 L310 290" stroke="#1f6b43" stroke-width="22" stroke-linecap="round"/>
+              <path d="M482 205 L514 255" stroke="#1f6b43" stroke-width="18" stroke-linecap="round"/>
+              <circle cx="395" cy="310" r="15" fill="#a7d100"/>
+            </g>
+            <path d="M0 575 C140 545 310 590 460 550 C640 505 790 555 900 520 L900 620 L0 620 Z" fill="#f6f3ed" opacity=".95"/>
+          </svg>
+        </div>
+
         <strong>Rower dobrany do trasy</strong>
         <p>Napisz, kiedy chcesz jechać, jaki masz wzrost i czy planujesz spokojną wycieczkę, las, single czy dłuższą trasę.</p>
         <a class="text-link" href="#rezerwacja">Przejdź do kalendarza →</a>
@@ -154,6 +197,7 @@
 <li>Fox 38 Factory GRIP2, 170 mm</li>
 <li>Fox DHX2 Factory</li>
 <li>Zawieszenie tylne ok. 160 mm</li></ul>
+          <div class="height-note"><span>Dla wzrostu</span><strong>ok. 178–195 cm</strong></div>
           <div class="price-inline">
             <div><span>4 godziny</span><strong>200 zł</strong></div>
             <div><span>Cały dzień</span><strong>300 zł</strong></div>
@@ -182,6 +226,7 @@
 <li>FOX 34 Float Rhythm, 120 mm</li>
 <li>Napęd Shimano XT/SLX 1×12</li>
 <li>Hamulce Shimano SLX</li></ul>
+          <div class="height-note"><span>Dla wzrostu</span><strong>ok. 185–200 cm</strong></div>
           <div class="price-inline">
             <div><span>4 godziny</span><strong>120 zł</strong></div>
             <div><span>Cały dzień</span><strong>200 zł</strong></div>
@@ -210,6 +255,7 @@
 <li>Akumulator Yamaha 500 Wh</li>
 <li>Pełne zawieszenie 130/130 mm</li>
 <li>Napęd 1×9</li></ul>
+          <div class="height-note"><span>Dla wzrostu</span><strong>ok. 160–172 cm</strong></div>
           <div class="price-inline">
             <div><span>4 godziny</span><strong>150 zł</strong></div>
             <div><span>Cały dzień</span><strong>250 zł</strong></div>
@@ -238,6 +284,7 @@
 <li>Aluminiowa rama</li>
 <li>RockShox 35 Gold RL, 160 mm</li>
 <li>RockShox Deluxe Select+</li></ul>
+          <div class="height-note"><span>Dla wzrostu</span><strong>ok. 170–182 cm</strong></div>
           <div class="price-inline">
             <div><span>4 godziny</span><strong>150 zł</strong></div>
             <div><span>Cały dzień</span><strong>250 zł</strong></div>
@@ -266,6 +313,7 @@
 <li>Dla wzrostu ok. 130–145 cm</li>
 <li>X-Fusion RC32, 120 mm</li>
 <li>Hydrauliczne hamulce Tektro</li></ul>
+          <div class="height-note"><span>Dla wzrostu</span><strong>ok. 130–145 cm</strong></div>
           <div class="price-inline">
             <div><span>4 godziny</span><strong>100 zł</strong></div>
             <div><span>Cały dzień</span><strong>150 zł</strong></div>
@@ -294,6 +342,7 @@
 <li>RockShox Recon Silver RL</li>
 <li>Shimano Deore 1×12</li>
 <li>Regulowana sztyca</li></ul>
+          <div class="height-note"><span>Dla wzrostu</span><strong>ok. 137–155 cm</strong></div>
           <div class="price-inline">
             <div><span>4 godziny</span><strong>100 zł</strong></div>
             <div><span>Cały dzień</span><strong>150 zł</strong></div>
@@ -471,7 +520,7 @@
         <div class="route-meta"><span>ok. 47,6 km</span><span>średnia</span></div>
         <h3>Lednicki szlak czerwony</h3>
         <p>Historyczna trasa w stronę Lednicy, Dziekanowic i Ostrowa Lednickiego. Dobry wybór na całodniową wycieczkę z widokami, historią i spokojniejszym tempem.</p>
-        <strong>Proponowany rower: Focus / Raymon / NS / Trek / Dartmoor</strong>
+        <strong>Proponowany rower: Focus / Raymon / NS / Trek / Dartmoor / Trek / Dartmoor</strong>
       </article>
 
 
@@ -479,7 +528,7 @@
         <div class="route-meta"><span>ok. 65 km</span><span>średnia / długa</span></div>
         <h3>Skorzęciński szlak niebieski</h3>
         <p>Dłuższa trasa w stronę jezior i terenów wypoczynkowych. Dobra na e-bike’a albo dla osoby z lepszą kondycją na szybkim hardtailu.</p>
-        <strong>Proponowany rower: Raymon / Focus / Trek / Dartmoor</strong>
+        <strong>Proponowany rower: Raymon / Focus / Trek / Dartmoor / Trek / Dartmoor</strong>
       </article>
 
 
@@ -487,7 +536,7 @@
         <div class="route-meta"><span>ok. 49 km</span><span>łatwa / średnia</span></div>
         <h3>Czerniejewski szlak żółty</h3>
         <p>Przyjemna trasa przez Lasy Czerniejewskie i spokojniejsze okolice. Dobra opcja na rekreacyjną wycieczkę poza miasto.</p>
-        <strong>Proponowany rower: Focus / Raymon / Trek / Dartmoor</strong>
+        <strong>Proponowany rower: Focus / Raymon / Trek / Dartmoor / Dartmoor</strong>
       </article>
 
 
@@ -495,7 +544,7 @@
         <div class="route-meta"><span>ok. 51 km</span><span>umiarkowana</span></div>
         <h3>Gniezno – Duszno – Trzemeszno – Gniezno</h3>
         <p>Spokojna, dłuższa pętla z dala od głównych dróg. Po drodze m.in. Duszno, punkt widokowy, Trzemeszno i okolice Kruchowa.</p>
-        <strong>Proponowany rower: Focus / Raymon / NS / Trek / Dartmoor</strong>
+        <strong>Proponowany rower: Focus / Raymon / NS / Trek / Dartmoor / Trek / Dartmoor</strong>
       </article>
 
 
@@ -503,8 +552,16 @@
         <div class="route-meta"><span>ok. 21 km</span><span>wymagająca technicznie i kondycyjnie</span></div>
         <h3>Maximus Singletrack w Klinach</h3>
         <p>Opcja dla zaawansowanych. Techniczny singletrack w Puszczy Zielonce: kręte ścieżki, podjazdy, naturalna nawierzchnia i dużo pracy na rowerze. Wymaga dojazdu samochodem z Gniezna.</p>
-        <strong>Proponowany rower: Ghost / NS / Focus / Raymon</strong>
+        <strong>Proponowany rower: Ghost / NS / Focus / Raymon / Raymon</strong>
       </article>
+
+      <article class="route-card">
+        <div class="route-meta"><span>ok. 16.6 km</span><span>MTB / średnia</span></div>
+        <h3>Nekla MTB</h3>
+        <p>Trasa z przesłanego śladu GPX „Trasa Rajdu Nekla MTB”. Dobra jako krótsza, terenowa propozycja poza Gnieznem, z leśnymi i szutrowymi odcinkami.</p>
+        <strong>Proponowany rower: Focus / Raymon / NS / Ghost / Trek / Dartmoor</strong>
+      </article>
+
 </div>
 
       <div class="routes-map-panel">
@@ -517,7 +574,7 @@
         </div>
         <div class="map-buttons" id="routeButtons" aria-label="Wybór trasy na mapie"></div>
         <div id="routesMap" class="routes-map" role="region" aria-label="Mapa tras rowerowych wokół Gniezna"></div>
-        <p class="map-note">Mapa korzysta z podkładu OpenStreetMap. Przebiegi tras są poglądowe i można je później podmienić na dokładne ślady GPX.</p>
+        <p class="map-note">Mapa korzysta z podkładu OpenStreetMap. Maximus i Nekla MTB są narysowane na podstawie przesłanych śladów GPX. Pozostałe przebiegi są orientacyjne i można je później podmienić na dokładne ślady GPX.</p>
       </div>
     </section>
 
@@ -559,8 +616,8 @@
     <p><a href="#top">Wróć na górę ↑</a></p>
   </footer>
 
-  <script>const bikes = [{"id": "ghost", "name": "Ghost Riot EN Advanced Kashima", "short": "Ghost", "size": "L", "category": "Full suspension / mocny MTB", "price_4h": 200, "price_day": 300, "deposit": 1000, "image": "https://www.centrumrowerowe.pl/photo/product/ghost-riot-en-advanced-kashima-2-279869-f-sk7-w780-h554_1.png", "marketing": "Najmocniejszy rower w ofercie EkoRide. Bardzo dobry wybór dla osoby, która chce spróbować roweru z wysokiej klasy zawieszeniem, pewnym prowadzeniem i dużą rezerwą bezpieczeństwa w trudniejszym terenie.", "technical": ["Rozmiar L", "Koła 29″", "Fox 38 Factory GRIP2, 170 mm", "Fox DHX2 Factory", "Zawieszenie tylne ok. 160 mm", "Napęd 1×12", "Hamulce 4-tłoczkowe"], "fit": "Orientacyjnie: ok. 178–188 cm", "best_for": "leśne trasy, single, trudniejszy teren, jazda z dużą kontrolą"}, {"id": "focus", "name": "Focus Raven 8.8", "short": "Focus", "size": "XL", "category": "Lekki hardtail XC", "price_4h": 120, "price_day": 200, "deposit": 800, "image": "https://www.centrumrowerowe.pl/photo/product/focus-raven-8-8-2-260658-f-sk7-w780-h554_2.png", "marketing": "Szybki, lekki rower dla wysokiej osoby. Idealny na dłuższe trasy, szutry, las i treningowe przejazdy. Daje bardzo bezpośrednie odczucie jazdy i dobrze sprawdza się tam, gdzie liczy się tempo.", "technical": ["Rozmiar XL", "Karbonowa rama", "FOX 34 Float Rhythm, 120 mm", "Napęd Shimano XT/SLX 1×12", "Hamulce Shimano SLX", "Charakter: XC / szybki trail"], "fit": "Rozmiar XL – dobór do wzrostu potwierdzamy przed rezerwacją", "best_for": "XC, szuter, las, trening, dłuższe przejazdy"}, {"id": "raymon", "name": "Raymon FullRay 130E 4.0 9S M350", "short": "Raymon", "size": "S", "category": "E-bike full suspension", "price_4h": 150, "price_day": 250, "deposit": 1000, "image": "https://www.centrumrowerowe.pl/photo/product/raymon-fullray-130e-4-0-9s-m350-2-202535-f-sk7-w780-h554.png", "marketing": "Elektryczny full suspension dla osoby, która chce przejechać więcej kilometrów, łatwiej pokonywać podjazdy i komfortowo jechać po nierównościach.", "technical": ["Rozmiar S", "Silnik Yamaha PW-TE, 60 Nm", "Akumulator Yamaha 500 Wh", "Pełne zawieszenie 130/130 mm", "Napęd 1×9", "Hydrauliczne hamulce tarczowe"], "fit": "Rozmiar S – dla niższej lub drobniejszej osoby", "best_for": "dłuższe trasy, podjazdy, komfortowa turystyka MTB"}, {"id": "ns", "name": "NS Bikes Define AL 150 2", "short": "NS", "size": "M", "category": "Trail / agresywny MTB", "price_4h": 150, "price_day": 250, "deposit": 800, "image": "https://www.centrumrowerowe.pl/photo/product/ns-bikes-define-al-150-2-2-180010-f-sk7-w780-h554.png", "marketing": "Solidny, aluminiowy full do dynamicznej jazdy w terenie. Dobrze sprawdzi się na leśnych ścieżkach, korzeniach, singletrackach i trasach, gdzie przydaje się pełne zawieszenie.", "technical": ["Rozmiar M", "Koła 29″", "Aluminiowa rama", "RockShox 35 Gold RL, 160 mm", "RockShox Deluxe Select+", "Tylne zawieszenie 150 mm", "Shimano Deore 1×12"], "fit": "Orientacyjnie: ok. 170–182 cm", "best_for": "las, singletrack, mocniejsze ścieżki, techniczny MTB"}, {"id": "dartmoor", "name": "Dartmoor Sparrow Junior", "short": "Dartmoor", "size": "Junior", "category": "Junior MTB", "price_4h": 100, "price_day": 150, "deposit": 500, "image": "https://dartmoor-bikes.com/sites/dartmoor/files/styles/lightbox/public/products/2026_Dartmoor_bikes_junior_Sparrow_Junior_26_24_orange_01.jpg.webp?itok=sazMHUcN", "marketing": "Prawdziwy rower MTB dla młodszego rowerzysty. Dużo lepszy wybór niż typowy dziecięcy rower rekreacyjny, jeśli dziecko chce pojeździć po lesie i lekkich nierównościach.", "technical": ["Rozmiar junior", "Koła 26″/24″", "Dla wzrostu ok. 130–145 cm", "X-Fusion RC32, 120 mm", "Hydrauliczne hamulce Tektro", "Napęd Microshift Acolyte 1×8"], "fit": "Orientacyjnie: ok. 130–145 cm", "best_for": "dzieci, las, pierwsze single, rodzinna jazda terenowa"}, {"id": "trek", "name": "Trek Roscoe 7 Miami Green", "short": "Trek", "size": "XS", "category": "Trail hardtail", "price_4h": 100, "price_day": 150, "deposit": 500, "image": "https://bikeplanet.pl/hpeciai/678373f45859fb8a4c3f6587c1ee723e/pol_ps_Rower-Trek-Roscoe-7-18964_1.png", "marketing": "Trailowy hardtail dla młodzieży albo drobniejszej osoby dorosłej. Szerokie opony, wygodna geometria i prosta obsługa sprawiają, że to dobry rower do zabawy w terenie.", "technical": ["Rozmiar XS", "Koła 27,5″ × 2,6″ w rozmiarze XS", "RockShox Recon Silver RL", "Shimano Deore 1×12", "Regulowana sztyca", "Hydrauliczne hamulce tarczowe"], "fit": "Rozmiar XS – dla niższej osoby lub starszego dziecka", "best_for": "młodzież, drobniejsi dorośli, las, rekreacyjny trail"}];</script>
+  <script>const bikes = [{"id": "ghost", "name": "Ghost Riot EN Advanced Kashima", "short": "Ghost", "size": "L", "category": "Full suspension / mocny MTB", "price_4h": 200, "price_day": 300, "deposit": 1000, "image": "https://www.centrumrowerowe.pl/photo/product/ghost-riot-en-advanced-kashima-2-279869-f-sk7-w780-h554_1.png", "marketing": "Najmocniejszy rower w ofercie EkoRide. Bardzo dobry wybór dla osoby, która chce spróbować roweru z wysokiej klasy zawieszeniem, pewnym prowadzeniem i dużą rezerwą bezpieczeństwa w trudniejszym terenie.", "technical": ["Rozmiar L", "Dla wzrostu: ok. 178–195 cm", "Koła 29″", "Fox 38 Factory GRIP2, 170 mm", "Fox DHX2 Factory", "Zawieszenie tylne ok. 160 mm", "Napęd 1×12", "Hamulce 4-tłoczkowe"], "fit": "Dla wzrostu: ok. 178–195 cm", "best_for": "leśne trasy, single, trudniejszy teren, jazda z dużą kontrolą", "height": "ok. 178–195 cm"}, {"id": "focus", "name": "Focus Raven 8.8", "short": "Focus", "size": "XL", "category": "Lekki hardtail XC", "price_4h": 120, "price_day": 200, "deposit": 800, "image": "https://www.centrumrowerowe.pl/photo/product/focus-raven-8-8-2-260658-f-sk7-w780-h554_2.png", "marketing": "Szybki, lekki rower dla wysokiej osoby. Idealny na dłuższe trasy, szutry, las i treningowe przejazdy. Daje bardzo bezpośrednie odczucie jazdy i dobrze sprawdza się tam, gdzie liczy się tempo.", "technical": ["Rozmiar XL", "Dla wzrostu: ok. 185–200 cm", "Karbonowa rama", "FOX 34 Float Rhythm, 120 mm", "Napęd Shimano XT/SLX 1×12", "Hamulce Shimano SLX", "Charakter: XC / szybki trail"], "fit": "Dla wzrostu: ok. 185–200 cm", "best_for": "XC, szuter, las, trening, dłuższe przejazdy", "height": "ok. 185–200 cm"}, {"id": "raymon", "name": "Raymon FullRay 130E 4.0 9S M350", "short": "Raymon", "size": "S", "category": "E-bike full suspension", "price_4h": 150, "price_day": 250, "deposit": 1000, "image": "https://www.centrumrowerowe.pl/photo/product/raymon-fullray-130e-4-0-9s-m350-2-202535-f-sk7-w780-h554.png", "marketing": "Elektryczny full suspension dla osoby, która chce przejechać więcej kilometrów, łatwiej pokonywać podjazdy i komfortowo jechać po nierównościach.", "technical": ["Rozmiar S", "Dla wzrostu: ok. 160–172 cm", "Silnik Yamaha PW-TE, 60 Nm", "Akumulator Yamaha 500 Wh", "Pełne zawieszenie 130/130 mm", "Napęd 1×9", "Hydrauliczne hamulce tarczowe"], "fit": "Dla wzrostu: ok. 160–172 cm", "best_for": "dłuższe trasy, podjazdy, komfortowa turystyka MTB", "height": "ok. 160–172 cm"}, {"id": "ns", "name": "NS Bikes Define AL 150 2", "short": "NS", "size": "M", "category": "Trail / agresywny MTB", "price_4h": 150, "price_day": 250, "deposit": 800, "image": "https://www.centrumrowerowe.pl/photo/product/ns-bikes-define-al-150-2-2-180010-f-sk7-w780-h554.png", "marketing": "Solidny, aluminiowy full do dynamicznej jazdy w terenie. Dobrze sprawdzi się na leśnych ścieżkach, korzeniach, singletrackach i trasach, gdzie przydaje się pełne zawieszenie.", "technical": ["Rozmiar M", "Dla wzrostu: ok. 170–182 cm", "Koła 29″", "Aluminiowa rama", "RockShox 35 Gold RL, 160 mm", "RockShox Deluxe Select+", "Tylne zawieszenie 150 mm", "Shimano Deore 1×12"], "fit": "Dla wzrostu: ok. 170–182 cm", "best_for": "las, singletrack, mocniejsze ścieżki, techniczny MTB", "height": "ok. 170–182 cm"}, {"id": "dartmoor", "name": "Dartmoor Sparrow Junior", "short": "Dartmoor", "size": "Junior", "category": "Junior MTB", "price_4h": 100, "price_day": 150, "deposit": 500, "image": "https://dartmoor-bikes.com/sites/dartmoor/files/styles/lightbox/public/products/2026_Dartmoor_bikes_junior_Sparrow_Junior_26_24_orange_01.jpg.webp?itok=sazMHUcN", "marketing": "Prawdziwy rower MTB dla młodszego rowerzysty. Dużo lepszy wybór niż typowy dziecięcy rower rekreacyjny, jeśli dziecko chce pojeździć po lesie i lekkich nierównościach.", "technical": ["Rozmiar junior", "Koła 26″/24″", "Dla wzrostu ok. 130–145 cm", "X-Fusion RC32, 120 mm", "Hydrauliczne hamulce Tektro", "Napęd Microshift Acolyte 1×8"], "fit": "Dla wzrostu: ok. 130–145 cm", "best_for": "dzieci, las, pierwsze single, rodzinna jazda terenowa", "height": "ok. 130–145 cm"}, {"id": "trek", "name": "Trek Roscoe 7 Miami Green", "short": "Trek", "size": "XS", "category": "Trail hardtail", "price_4h": 100, "price_day": 150, "deposit": 500, "image": "https://bikeplanet.pl/hpeciai/678373f45859fb8a4c3f6587c1ee723e/pol_ps_Rower-Trek-Roscoe-7-18964_1.png", "marketing": "Trailowy hardtail dla młodzieży albo drobniejszej osoby dorosłej. Szerokie opony, wygodna geometria i prosta obsługa sprawiają, że to dobry rower do zabawy w terenie.", "technical": ["Rozmiar XS", "Dla wzrostu: ok. 137–155 cm", "Koła 27,5″ × 2,6″ w rozmiarze XS", "RockShox Recon Silver RL", "Shimano Deore 1×12", "Regulowana sztyca", "Hydrauliczne hamulce tarczowe"], "fit": "Dla wzrostu: ok. 137–155 cm", "best_for": "młodzież, drobniejsi dorośli, las, rekreacyjny trail", "height": "ok. 137–155 cm"}];</script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
