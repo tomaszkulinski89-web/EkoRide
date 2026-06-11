@@ -1,8 +1,8 @@
+
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const menuButton = document.querySelector('.menu-button');
 const navLinks = document.querySelector('.nav-links');
-
 menuButton.addEventListener('click', () => {
   const expanded = menuButton.getAttribute('aria-expanded') === 'true';
   menuButton.setAttribute('aria-expanded', String(!expanded));
@@ -10,6 +10,29 @@ menuButton.addEventListener('click', () => {
 });
 
 const bikeById = Object.fromEntries(bikes.map((bike) => [bike.id, bike]));
+const selectedDates = new Set();
+let calendarDate = new Date();
+calendarDate.setDate(1);
+let selectedDuration = '4h';
+
+/*
+  Tu można ręcznie wpisywać zajęte terminy.
+  Format: id roweru: ['YYYY-MM-DD', 'YYYY-MM-DD']
+  Przykład:
+  const bookedDates = {
+    ghost: ['2026-06-20', '2026-06-21'],
+    raymon: ['2026-06-22']
+  };
+*/
+const bookedDates = {
+  ghost: [],
+  focus: [],
+  raymon: [],
+  ns: [],
+  dartmoor: [],
+  trek: []
+};
+
 const modal = document.getElementById('bikeModal');
 const modalImage = document.getElementById('modalImage');
 const modalCategory = document.getElementById('modalCategory');
@@ -18,27 +41,31 @@ const modalMarketing = document.getElementById('modalMarketing');
 const modalMeta = document.getElementById('modalMeta');
 const modalSpecs = document.getElementById('modalSpecs');
 const bikeSelect = document.getElementById('bikeSelect');
-const durationSelect = document.getElementById('durationSelect');
 const calendarTitle = document.getElementById('calendarTitle');
 const calendarGrid = document.getElementById('calendarGrid');
 const bookingSummary = document.getElementById('bookingSummary');
 const mailReservation = document.getElementById('mailReservation');
-const selectedDates = new Set();
+const copyReservation = document.getElementById('copyReservation');
+const copyStatus = document.getElementById('copyStatus');
+const bookingBikeImage = document.getElementById('bookingBikeImage');
+const bookingBikeCategory = document.getElementById('bookingBikeCategory');
+const bookingBikeName = document.getElementById('bookingBikeName');
+const bookingBikePrices = document.getElementById('bookingBikePrices');
 
-let calendarDate = new Date();
-calendarDate.setDate(1);
+function selectedBike() {
+  return bikeById[bikeSelect.value] || bikes[0];
+}
 
-function formatDate(date) {
-  return date.toISOString().slice(0, 10);
+function formatDateLocal(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 function prettyDate(isoDate) {
   const [year, month, day] = isoDate.split('-');
   return `${day}.${month}.${year}`;
-}
-
-function selectedBike() {
-  return bikeById[bikeSelect.value] || bikes[0];
 }
 
 function openBikeModal(bikeId) {
@@ -50,18 +77,18 @@ function openBikeModal(bikeId) {
   modalCategory.textContent = `${bike.category} • rozmiar ${bike.size}`;
   modalTitle.textContent = bike.name;
   modalMarketing.textContent = bike.marketing;
-
   modalMeta.innerHTML = `
     <div><span>4 godziny</span><strong>${bike.price_4h} zł</strong></div>
     <div><span>Cały dzień</span><strong>${bike.price_day} zł</strong></div>
     <div><span>Kaucja</span><strong>${bike.deposit} zł</strong></div>
   `;
-
   modalSpecs.innerHTML = bike.technical.map((item) => `<li>${item}</li>`).join('');
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
 
   bikeSelect.value = bike.id;
+  selectedDates.clear();
+  renderCalendar();
   updateBookingSummary();
 }
 
@@ -70,18 +97,25 @@ function closeBikeModal() {
   modal.setAttribute('aria-hidden', 'true');
 }
 
-document.querySelectorAll('[data-bike]').forEach((element) => {
+document.querySelectorAll('.bike-card').forEach((element) => {
   element.addEventListener('click', (event) => {
-    const button = event.target.closest('button');
-    const bikeId = button?.dataset.bike || element.dataset.bike;
-    openBikeModal(bikeId);
+    if (event.target.closest('a.quick-book')) return;
+    openBikeModal(element.dataset.bike);
   });
-
   element.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       openBikeModal(element.dataset.bike);
     }
+  });
+});
+
+document.querySelectorAll('.quick-book').forEach((link) => {
+  link.addEventListener('click', () => {
+    bikeSelect.value = link.dataset.bike;
+    selectedDates.clear();
+    renderCalendar();
+    updateBookingSummary();
   });
 });
 
@@ -93,8 +127,9 @@ modal.addEventListener('click', (event) => {
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeBikeModal();
 });
-
-document.getElementById('modalReserve').addEventListener('click', closeBikeModal);
+document.getElementById('modalReserve').addEventListener('click', () => {
+  closeBikeModal();
+});
 
 bikes.forEach((bike) => {
   const option = document.createElement('option');
@@ -103,10 +138,27 @@ bikes.forEach((bike) => {
   bikeSelect.appendChild(option);
 });
 
-bikeSelect.addEventListener('change', updateBookingSummary);
-durationSelect.addEventListener('change', updateBookingSummary);
+bikeSelect.addEventListener('change', () => {
+  selectedDates.clear();
+  renderCalendar();
+  updateBookingSummary();
+});
+
+document.querySelectorAll('.duration').forEach((button) => {
+  button.addEventListener('click', () => {
+    selectedDuration = button.dataset.duration;
+    document.querySelectorAll('.duration').forEach((btn) => btn.classList.remove('active'));
+    button.classList.add('active');
+    updateBookingSummary();
+  });
+});
+
+function isBooked(bikeId, iso) {
+  return (bookedDates[bikeId] || []).includes(iso);
+}
 
 function renderCalendar() {
+  const bike = selectedBike();
   const year = calendarDate.getFullYear();
   const month = calendarDate.getMonth();
   const monthName = calendarDate.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' });
@@ -128,17 +180,33 @@ function renderCalendar() {
 
   for (let day = 1; day <= daysInMonth; day += 1) {
     const date = new Date(year, month, day);
-    const iso = formatDate(date);
+    const iso = formatDateLocal(date);
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'day';
     button.dataset.date = iso;
     button.innerHTML = `<span class="number">${day}</span><span class="status">dostępny</span>`;
 
+    const booked = isBooked(bike.id, iso);
+
     if (date < today) {
       button.classList.add('past');
       button.querySelector('.status').textContent = 'niedostępny';
       button.disabled = true;
+    } else if (booked) {
+      button.classList.add('booked');
+      button.querySelector('.status').textContent = 'zarezerwowany';
+      button.disabled = true;
+    } else {
+      button.addEventListener('click', () => {
+        if (selectedDates.has(iso)) {
+          selectedDates.delete(iso);
+        } else {
+          selectedDates.add(iso);
+        }
+        renderCalendar();
+        updateBookingSummary();
+      });
     }
 
     if (selectedDates.has(iso)) {
@@ -146,18 +214,14 @@ function renderCalendar() {
       button.querySelector('.status').textContent = 'wybrany';
     }
 
-    button.addEventListener('click', () => {
-      if (selectedDates.has(iso)) {
-        selectedDates.delete(iso);
-      } else {
-        selectedDates.add(iso);
-      }
-      renderCalendar();
-      updateBookingSummary();
-    });
-
     calendarGrid.appendChild(button);
   }
+
+  bookingBikeImage.src = bike.image;
+  bookingBikeImage.alt = bike.name;
+  bookingBikeCategory.textContent = `${bike.category} • rozmiar ${bike.size}`;
+  bookingBikeName.textContent = bike.name;
+  bookingBikePrices.textContent = `4 h: ${bike.price_4h} zł • dzień: ${bike.price_day} zł • kaucja: ${bike.deposit} zł`;
 }
 
 document.getElementById('prevMonth').addEventListener('click', () => {
@@ -170,76 +234,78 @@ document.getElementById('nextMonth').addEventListener('click', () => {
   renderCalendar();
 });
 
-document.getElementById('clearDates').addEventListener('click', () => {
-  selectedDates.clear();
-  renderCalendar();
-  updateBookingSummary();
-});
+function buildReservationText() {
+  const bike = selectedBike();
+  const dates = Array.from(selectedDates).sort();
+  const durationLabel = selectedDuration === '4h' ? '4 godziny' : 'cały dzień';
+  const unitPrice = selectedDuration === '4h' ? bike.price_4h : bike.price_day;
+  const total = dates.length ? unitPrice * dates.length : unitPrice;
+
+  const name = document.getElementById('customerName').value.trim();
+  const surname = document.getElementById('customerSurname').value.trim();
+  const email = document.getElementById('customerEmail').value.trim();
+  const phone = document.getElementById('customerPhone').value.trim();
+  const height = document.getElementById('customerHeight').value.trim();
+  const pickupTime = document.getElementById('pickupTime').value.trim();
+  const notes = document.getElementById('customerNotes').value.trim();
+
+  return [
+    'Dzień dobry,',
+    '',
+    'Proszę o sprawdzenie dostępności i rezerwację roweru:',
+    `Rower: ${bike.name}`,
+    `Rozmiar: ${bike.size}`,
+    `Termin: ${dates.length ? dates.map(prettyDate).join(', ') : 'nie wybrano daty'}`,
+    `Czas wypożyczenia: ${durationLabel}`,
+    `Cena orientacyjna: ${total} zł`,
+    `Kaucja: ${bike.deposit} zł`,
+    '',
+    `Imię: ${name}`,
+    `Nazwisko: ${surname}`,
+    `E-mail: ${email}`,
+    `Telefon: ${phone}`,
+    `Wzrost rowerzysty: ${height}`,
+    `Preferowana godzina odbioru: ${pickupTime}`,
+    `Uwagi: ${notes}`,
+    '',
+    'Proszę o potwierdzenie terminu.',
+  ].join('\n');
+}
 
 function updateBookingSummary() {
   const bike = selectedBike();
   const dates = Array.from(selectedDates).sort();
-  const duration = durationSelect.value;
-  const unitPrice = duration === '4h' ? bike.price_4h : bike.price_day;
-  const total = dates.length ? unitPrice * dates.length : unitPrice;
-  const durationLabel = duration === '4h' ? '4 godziny' : 'cały dzień';
-
-  if (!dates.length) {
-    bookingSummary.innerHTML = `
-      <strong>${bike.name}</strong><br>
-      ${durationLabel}: ${unitPrice} zł • kaucja: ${bike.deposit} zł<br>
-      Wybierz jedną lub kilka dat w kalendarzu.
-    `;
-  } else {
-    bookingSummary.innerHTML = `
-      <strong>${bike.name}</strong><br>
-      Termin: ${dates.map(prettyDate).join(', ')}<br>
-      Czas: ${durationLabel} • Cena: ${total} zł • Kaucja: ${bike.deposit} zł
-    `;
-  }
-
-  updateMailLink();
-}
-
-function updateMailLink() {
-  const bike = selectedBike();
-  const dates = Array.from(selectedDates).sort();
-  const duration = durationSelect.value === '4h' ? '4 godziny' : 'cały dzień';
-  const unitPrice = durationSelect.value === '4h' ? bike.price_4h : bike.price_day;
+  const durationLabel = selectedDuration === '4h' ? '4 godziny' : 'cały dzień';
+  const unitPrice = selectedDuration === '4h' ? bike.price_4h : bike.price_day;
   const total = dates.length ? unitPrice * dates.length : unitPrice;
 
-  const name = document.getElementById('customerName').value.trim();
-  const phone = document.getElementById('customerPhone').value.trim();
-  const email = document.getElementById('customerEmail').value.trim();
-  const height = document.getElementById('customerHeight').value.trim();
-  const notes = document.getElementById('customerNotes').value.trim();
+  bookingSummary.innerHTML = dates.length
+    ? `<strong>${bike.short}</strong><br>Termin: ${dates.map(prettyDate).join(', ')}<br>Czas: ${durationLabel}<br>Cena: ${total} zł • kaucja: ${bike.deposit} zł`
+    : `<strong>${bike.short}</strong><br>${durationLabel}: ${unitPrice} zł • kaucja: ${bike.deposit} zł<br>Wybierz dzień lub kilka dni w kalendarzu.`;
 
   const subject = `Rezerwacja roweru EkoRide: ${bike.short}`;
-  const body = [
-    'Dzień dobry,',
-    '',
-    'Chciałbym/chciałabym zapytać o rezerwację roweru:',
-    `Rower: ${bike.name}`,
-    `Rozmiar: ${bike.size}`,
-    `Termin: ${dates.length ? dates.map(prettyDate).join(', ') : 'nie wybrano daty'}`,
-    `Czas wypożyczenia: ${duration}`,
-    `Cena orientacyjna: ${total} zł`,
-    `Kaucja: ${bike.deposit} zł`,
-    '',
-    `Imię i nazwisko: ${name}`,
-    `Telefon: ${phone}`,
-    `E-mail: ${email}`,
-    `Wzrost rowerzysty: ${height}`,
-    `Uwagi: ${notes}`,
-    '',
-    'Proszę o potwierdzenie dostępności terminu.',
-  ].join('\n');
-
-  mailReservation.href = `mailto:kontakt@ekoride.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  mailReservation.href = `mailto:kontakt@ekoride.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildReservationText())}`;
+  renderCalendar();
 }
 
-['customerName', 'customerPhone', 'customerEmail', 'customerHeight', 'customerNotes'].forEach((id) => {
-  document.getElementById(id).addEventListener('input', updateMailLink);
+['customerName', 'customerSurname', 'customerEmail', 'customerPhone', 'customerHeight', 'pickupTime', 'customerNotes'].forEach((id) => {
+  document.getElementById(id).addEventListener('input', updateBookingSummary);
+});
+
+copyReservation.addEventListener('click', async () => {
+  const text = buildReservationText();
+  try {
+    await navigator.clipboard.writeText(text);
+    copyStatus.textContent = 'Skopiowano treść zapytania. Możesz wkleić ją do e-maila, SMS-a lub WhatsAppa.';
+  } catch (error) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    copyStatus.textContent = 'Skopiowano treść zapytania.';
+  }
 });
 
 renderCalendar();
