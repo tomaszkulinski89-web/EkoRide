@@ -444,3 +444,26 @@ h3 { font-size: 1.35rem; }
     grid-template-columns: 1fr;
   }
 }
+
+
+/* v8 hero photo */
+.real-hero-photo {
+  display: block;
+  width: 100%;
+  max-height: 270px;
+  min-height: 220px;
+  object-fit: cover;
+  object-position: center;
+  margin: 12px 0 auto;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 18px 45px rgba(0,0,0,.18);
+  background: rgba(255,255,255,.12);
+}
+
+@media (max-width: 760px) {
+  .real-hero-photo {
+    max-height: 220px;
+    min-height: 170px;
+  }
+}
